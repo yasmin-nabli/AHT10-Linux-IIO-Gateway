@@ -34,11 +34,13 @@ This project transforms a Raspberry Pi into an autonomous IoT hub that:
 ## ⚙️ Installation & Setup Guide
 **1. Hardware Connection:**
 Connect the AHT10 sensor to the Raspberry Pi GPIO pins as follows:
+```text
 AHT10 Pin|RPi Pin (Physical)|Function
 VCC      |Pin 1             |3.3V Power
 GND      |Pin 9             |Ground
 SDA      |Pin 3             |I2C Data (GPIO 2)
 SCL      |Pin 5             |I2C Clock (GPIO 3)
+```
 
 **2. Prepare the Operating System**
 The Linux kernel must have I2C enabled to expose the sensor to the `/sys/class/hwmon` interface:
