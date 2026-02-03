@@ -28,12 +28,11 @@ This project transforms a Raspberry Pi into an autonomous IoT hub that:
 │   └── iot_gateway.service  # Linux service for 24/7 background operation
 ├── setup.sh                 # One-click installation script
 └── requirements.txt         # Python dependencies
-
-
+```
 
 
 ## ⚙️ Installation & Setup Guide
-1. Hardware Connection:
+**1. Hardware Connection:**
 Connect the AHT10 sensor to the Raspberry Pi GPIO pins as follows:
 AHT10 Pin|RPi Pin (Physical)|Function
 VCC      |Pin 1             |3.3V Power
@@ -41,19 +40,39 @@ GND      |Pin 9             |Ground
 SDA      |Pin 3             |I2C Data (GPIO 2)
 SCL      |Pin 5             |I2C Clock (GPIO 3)
 
-2. Prepare the Operating System
+**2. Prepare the Operating System**
 The Linux kernel must have I2C enabled to expose the sensor to the `/sys/class/hwmon` interface:
-1. Open the terminal and run: ```text sudo raspi-config
+1. Open the terminal and run: `sudo raspi-config`
 2. Navigate to Interface Options -> I2C.
 3. Select Yes to enable it.
 4. Reboot your Raspberry Pi.
 
-3. Automated Deployment
-This project includes a setup.sh script that automates the environment setup, including dependency installation and the creation of the system service.Bash# Clone the repository
+**3. Automated Deployment**
+This project includes a setup.sh script that automates the environment setup, including dependency installation and the creation of the system service.
+```Bash
+ Clone the repository
 git clone [https://github.com/yourusername/AHT10-Linux-IIO-Gateway.git](https://github.com/yourusername/AHT10-Linux-IIO-Gateway.git)
 cd AHT10-Linux-IIO-Gateway
-
 # Make the script executable and run it
 chmod +x setup.sh
 ./setup.sh
-4. Setting up the DashboardTo visualize your telemetry data:Open Node-RED (usually at http://<your-pi-ip>:1880).Click the Menu (top right) -> Import.Paste the contents of config/node_red_flow.json or upload the file.Click Deploy.Access the live UI at http://<your-pi-ip>:1880/ui.🛠️ Management & MonitoringThe gateway runs automatically in the background as a Systemd Service. You can manage it with these commands:Check Status: systemctl status iot_gateway.serviceView Real-time Logs: journalctl -u iot_gateway.service -fStop Service: sudo systemctl stop iot_gateway.serviceRestart Service: sudo systemctl restart iot_gateway.service🧠 Key Logic: Report-by-ExceptionTo optimize network bandwidth and storage, the system only logs and publishes data if:It is the first reading after startup.Temperature changes by more than 0.5°C.Humidity changes by more than 1.0%.
+```
+**4. Setting up the Dashboard**
+To visualize your telemetry data:
+1. Open Node-RED (usually at http://<your-pi-ip>:1880).
+2. Click the Menu (top right) -> Import.
+3. Paste the contents of config/node_red_flow.json or upload the file.
+4. Click Deploy.
+5. Access the live UI at http://<your-pi-ip>:1880/ui.
+## 🛠️ Management & Monitoring
+The gateway runs automatically in the background as a **Systemd Service**. You can manage it with these commands:
+- Check Status: `systemctl status iot_gateway.service`
+- View Real-time Logs: `journalctl -u iot_gateway.service -f`
+- Stop Service: `sudo systemctl stop iot_gateway.service`
+- Restart Service: `sudo systemctl restart iot_gateway.service`
+
+  ## 🧠 Key Logic: Report-by-Exception
+  To optimize network bandwidth and storage, the system only logs and publishes data if:
+  1. It is the first reading after startup.
+  2. Temperature changes by more than 0.5°C.
+  3. Humidity changes by more than 1.0%.
