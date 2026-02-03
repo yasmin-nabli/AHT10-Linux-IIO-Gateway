@@ -27,7 +27,9 @@ This project transforms a Raspberry Pi into an autonomous IoT hub that:
 ├── systemd/
 │   └── iot_gateway.service  # Linux service for 24/7 background operation
 ├── setup.sh                 # One-click installation script
-└── requirements.txt         # Python dependencies```
+└── requirements.txt         # Python dependencies
+
+
 
 
 ## ⚙️ Installation & Setup Guide
