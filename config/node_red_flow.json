@@ -1,0 +1,166 @@
+[
+    {
+        "id": "c1553a9870847691",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e1ba36b13b5fc64c",
+        "type": "mqtt in",
+        "z": "c1553a9870847691",
+        "name": "temperature",
+        "topic": "sensor/temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d51113e362bbbdc0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "55bd3e70a13e6657"
+            ]
+        ]
+    },
+    {
+        "id": "0bd62386fefbca0c",
+        "type": "mqtt in",
+        "z": "c1553a9870847691",
+        "name": "humidity",
+        "topic": "sensor/humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d51113e362bbbdc0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 220,
+        "wires": [
+            [
+                "06228d8c666e96e4"
+            ]
+        ]
+    },
+    {
+        "id": "55bd3e70a13e6657",
+        "type": "ui_gauge",
+        "z": "c1553a9870847691",
+        "name": "",
+        "group": "433794f458dba262",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 630,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "06228d8c666e96e4",
+        "type": "ui_gauge",
+        "z": "c1553a9870847691",
+        "name": "",
+        "group": "433794f458dba262",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 570,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d51113e362bbbdc0",
+        "type": "mqtt-broker",
+        "name": "csf",
+        "broker": "192.168.0.10",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "433794f458dba262",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "219b8b982930a523",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "219b8b982930a523",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "6c873614502996d7",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

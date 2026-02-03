@@ -1,0 +1,16 @@
+[Unit]
+Description=Omni-Sense IoT Gateway Collector
+After=network.target mosquitto.service
+
+[Service]
+# Adjust the path to where your script is located
+ExecStart=/usr/bin/python3 /home/pi/Omni-Sense-IoT/raspberry-pi/src/aht10_collector.py
+WorkingDirectory=/home/pi/Omni-Sense-IoT/raspberry-pi/src
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=5
+User=pi
+
+[Install]
+WantedBy=multi-user.target
